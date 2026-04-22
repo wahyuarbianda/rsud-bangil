@@ -35,7 +35,10 @@ DB_PASSWORD=
 # 5. Jalankan migration
 php artisan migrate
 
-# 6. Jalankan server
+# 6. Jalankan seeder
+php artisan db:seed
+
+# 7. Jalankan server
 php artisan serve
 ```
 
