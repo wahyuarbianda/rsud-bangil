@@ -87,20 +87,21 @@ Base URL: `http://localhost:8000/api`
 
 ### Soal 1 — GET Daftar Produk Aktif (25%)
 
-| Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| GET | `/api/products` | Daftar produk aktif dengan filter & pagination |
+| Method | Endpoint        | Deskripsi                                      |
+| ------ | --------------- | ---------------------------------------------- |
+| GET    | `/api/products` | Daftar produk aktif dengan filter & pagination |
 
 **Query Parameters:**
 
-| Param | Tipe | Deskripsi |
-|-------|------|-----------|
-| `search` | string | Filter nama produk (LIKE) |
-| `category_id` | integer | Filter berdasarkan kategori |
-| `per_page` | integer | Jumlah data per halaman (default: 10) |
-| `page` | integer | Halaman ke- |
+| Param         | Tipe    | Deskripsi                             |
+| ------------- | ------- | ------------------------------------- |
+| `search`      | string  | Filter nama produk (LIKE)             |
+| `category_id` | integer | Filter berdasarkan kategori           |
+| `per_page`    | integer | Jumlah data per halaman (default: 10) |
+| `page`        | integer | Halaman ke-                           |
 
 **Response:**
+
 ```json
 {
     "success": true,
@@ -132,11 +133,12 @@ Base URL: `http://localhost:8000/api`
 
 ### Soal 2 — POST Order (35%)
 
-| Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| POST | `/api/orders` | Buat pesanan baru |
+| Method | Endpoint      | Deskripsi         |
+| ------ | ------------- | ----------------- |
+| POST   | `/api/orders` | Buat pesanan baru |
 
 **Request Body:**
+
 ```json
 {
     "product_id": 1,
@@ -145,10 +147,12 @@ Base URL: `http://localhost:8000/api`
 ```
 
 **Validasi (Bahasa Indonesia):**
+
 - `product_id` wajib diisi, harus ada di tabel products
 - `qty` wajib diisi, integer, minimal 1
 
 **Response Sukses (201):**
+
 ```json
 {
     "success": true,
@@ -167,6 +171,7 @@ Base URL: `http://localhost:8000/api`
 ```
 
 **Response Stok Kurang (422):**
+
 ```json
 {
     "success": false,
@@ -179,12 +184,13 @@ Base URL: `http://localhost:8000/api`
 
 ### Soal 3 — Dashboard Analytics (40%)
 
-| Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| GET | `/api/dashboard/summary` | Ringkasan performa toko |
-| DELETE | `/api/dashboard/cache` | Flush cache dashboard |
+| Method | Endpoint                 | Deskripsi               |
+| ------ | ------------------------ | ----------------------- |
+| GET    | `/api/dashboard/summary` | Ringkasan performa toko |
+| DELETE | `/api/dashboard/cache`   | Flush cache dashboard   |
 
 **Response GET /api/dashboard/summary:**
+
 ```json
 {
     "success": true,
@@ -217,9 +223,9 @@ Base URL: `http://localhost:8000/api`
 
 ### Bonus — Scoped Binding (+10 poin)
 
-| Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| GET | `/api/users/{user}/orders/{order}` | Order spesifik milik user |
+| Method | Endpoint                           | Deskripsi                 |
+| ------ | ---------------------------------- | ------------------------- |
+| GET    | `/api/users/{user}/orders/{order}` | Order spesifik milik user |
 
 Order yang bukan milik user akan mengembalikan **404**.
 
@@ -231,11 +237,11 @@ Import file `TesRsud.postman_collection.json` ke Postman.
 
 **Collection Variables:**
 
-| Variable | Default | Keterangan |
-|----------|---------|------------|
-| `base_url` | `http://localhost:8000/api` | Sesuaikan port |
-| `user_id` | `1` | ID user untuk bonus scoped binding |
-| `order_id` | `1` | ID order untuk bonus scoped binding |
+| Variable   | Default                     | Keterangan                          |
+| ---------- | --------------------------- | ----------------------------------- |
+| `base_url` | `http://localhost:8000/api` | Sesuaikan port                      |
+| `user_id`  | `1`                         | ID user untuk bonus scoped binding  |
+| `order_id` | `1`                         | ID order untuk bonus scoped binding |
 
 ---
 
@@ -247,3 +253,8 @@ products    : id, name, category_id (FK), price decimal(10,2), stock, is_active,
 orders      : id, user_id (FK nullable), product_id (FK), qty, total_price, status, timestamps
 users       : id, name, email, password, timestamps (default Laravel)
 ```
+
+## SS hasil
+
+![alt text](image.png)
+![alt text](image-1.png)
